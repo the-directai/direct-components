@@ -1,8 +1,8 @@
 import {FunctionComponentElement, ReactElement} from "react";
 
-function Navbar(): FunctionComponentElement<ReactElement> {
+function Navbar() {
     return (
-        <div>test</div>
+        <div>future navbar</div>
     );
 }
 
