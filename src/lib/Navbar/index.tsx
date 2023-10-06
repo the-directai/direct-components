@@ -1,6 +1,6 @@
 import {FunctionComponentElement, ReactElement} from "react";
 
-function Navbar(): FunctionComponentElement<ReactElement> {
+function Navbar() {
     return (
         <div>future navbar</div>
     );
