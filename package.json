@@ -20,7 +20,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "sass": "^1.69.0",
-    "typescript": "^4.4.2",
+    "typescript": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,6 +52,6 @@
     "@testing-library/user-event": "^13.2.1",
     "@babel/core": "^7.23.0",
     "@babel/preset-react": "^7.22.15",
-    "babel-cli": "^6.26.0",
+    "babel-cli": "^6.26.0"
   }
 }
