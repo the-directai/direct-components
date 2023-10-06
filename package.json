@@ -12,9 +12,6 @@
     "url": "https://github.com/the-directai/direct-components"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
@@ -24,7 +21,6 @@
     "react-scripts": "5.0.1",
     "sass": "^1.69.0",
     "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,8 +47,11 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "@babel/core": "^7.23.0",
     "@babel/preset-react": "^7.22.15",
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
   }
 }
