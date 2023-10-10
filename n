@@ -1,9 +1,0 @@
-//    "@babel/core": "^7.23.0",
-//    "@babel/preset-react": "^7.22.15",
-//    "@rollup/plugin-commonjs": "^25.0.5",
-//    "@rollup/plugin-node-resolve": "^15.2.3",
-//    "@rollup/plugin-typescript": "^11.1.5",
-
-//    "rollup": "^4.0.2",
-//    "rollup-plugin-dts": "^6.1.0",
-//    "rollup-plugin-scss": "^4.0.0"
