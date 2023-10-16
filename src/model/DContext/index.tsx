@@ -15,7 +15,7 @@ import "/global.scss";
 import React from "react";
 
 type DContextProps = {
-    darkMode: boolean;
+    darkMode?: boolean;
     children?: React.JSX.Element[] | React.JSX.Element | string;
 };
 
