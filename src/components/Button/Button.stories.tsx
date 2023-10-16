@@ -11,14 +11,14 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = (args: any) => <Button data-testId="Button-id" {...args} />;
+export const Default: Story = (args: object) => <Button data-testId="Button-id" {...args} />;
 
 Default.args = {
     disabled: false,
     children: "Primary",
 };
 
-export const Secondary: Story = (args: any) => <Button data-testId="Button-id" {...args} />;
+export const Secondary: Story = (args: object) => <Button data-testId="Button-id" {...args} />;
 
 Secondary.args = {
     disabled: false,
@@ -26,7 +26,7 @@ Secondary.args = {
     children: "Secondary",
 };
 
-export const Disabled: Story = (args: any) => <Button data-testId="Button-id" {...args} />;
+export const Disabled: Story = (args: object) => <Button data-testId="Button-id" {...args} />;
 
 Disabled.args = {
     disabled: true,

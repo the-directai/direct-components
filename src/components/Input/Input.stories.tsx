@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof Input>;
 
-export const Default: Story = (args: any) => <Input data-testId="InputField-id" {...args} />;
+export const Default: Story = (args: object) => <Input data-testId="InputField-id" {...args} />;
 
 Default.args = {
     error: false,
@@ -20,7 +20,7 @@ Default.args = {
     defaultValue: "",
 };
 
-export const Disabled: Story = (args: any) => <Input data-testId="InputField-id" {...args} />;
+export const Disabled: Story = (args: object) => <Input data-testId="InputField-id" {...args} />;
 
 Disabled.args = {
     error: false,
@@ -29,7 +29,7 @@ Disabled.args = {
     defaultValue: "",
 };
 
-export const Error: Story = (args: any) => <Input data-testId="InputField-id" {...args} />;
+export const Error: Story = (args: object) => <Input data-testId="InputField-id" {...args} />;
 
 Error.args = {
     error: true,
