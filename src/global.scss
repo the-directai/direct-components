@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Inter';
+  src: url("./assets/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+}
+
+
+@import "variables";
+
+.d--component {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
