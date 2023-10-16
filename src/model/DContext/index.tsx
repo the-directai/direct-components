@@ -11,7 +11,7 @@
  * @author Michał Chruścielski <michalch775@gmail.com>
  */
 
-import "/global.scss";
+import "/src/global.scss";
 import React from "react";
 
 type DContextProps = {
@@ -26,9 +26,12 @@ type DContextProps = {
  * @param {boolean} props.darkMode dark mode switch
  * @param {React.JSX.Element[] | React.JSX.Element | string } [props.children] app content
  */
-function DContext({ darkMode = true, children }: DContextProps) {
+function DContext({ darkMode, children }: DContextProps) {
     return (
-        <div className={`direct--context ${darkMode ? "d--dark--mode" : "d--light--mode"}`}>
+        <div
+            className={`direct--context 
+            ${darkMode !== undefined ? (darkMode ? "d--dark--mode" : "d--light--mode") : ""}`}
+        >
             {children ? children : <></>}
         </div>
     );

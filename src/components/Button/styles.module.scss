@@ -1,0 +1,35 @@
+.button {
+  padding: 0.6rem 1rem;
+  background-color: var(--d--basic);
+  color: var(--d--element--accent);
+  font-size: 1rem;
+  outline: 0;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--d--faded) !important;
+    background-color: var(--d--quasi--contrast) !important;
+  }
+
+  &:hover {
+    background-color: var(--d--light);
+  }
+
+  &.secondary {
+    background-color: transparent;
+    border: 2px solid var(--d--basic);
+    color: var(--d--basic);
+
+    &:hover {
+      background-color: var(--d--basic);
+      color: var(--d--element--accent);
+    }
+  }
+
+  .primary {
+
+  }
+}

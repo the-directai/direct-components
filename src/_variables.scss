@@ -1,5 +1,4 @@
-:root {
-  // standard colours in dark mode (default)
+@mixin dark-mode-variables {
   --d--background: #080809;
   --d--quasi--contrast: #727275;
   --d--border: #727275;
@@ -7,23 +6,47 @@
   --d--element: #1E1E1E;
   --d--element--accent: #161617;
   --d--slightly--transparent--element: rgb(15, 15, 16, 0.8);
-  --d--light: #E5E9EC;
+  --d--light: #d0d4d7;
   --d--basic: #E5E9EC;
+}
 
-  // action colours
+@mixin light-mode-variables {
+  --d--background: #e3e3ea;
+  --d--quasi--contrast: #a0a0a4;
+  --d--border: #d5d5da;
+  --d--faded: #e9ebee;
+  --d--element: #f5f6f8;
+  --d--element--accent: #dcdce1;
+  --d--slightly--transparent--element: rgba(194, 194, 204, 0.8);
+  --d--light: #1f1f21;
+  --d--basic: #161617;
+}
+
+@mixin shared-variables {
   --d--action--blue: #0582ca;
   --d--accent--red: #dc0e15;
+}
+
+// dark and light mode configuration
+:root {
+  @include dark-mode-variables;
+  @include shared-variables;
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-mode-variables;
+  }
 
   @media (prefers-color-scheme: light) {
-    // standard colours in light mode
-    --d--background: #e3e3ea;
-    --d--quasi--contrast: #a0a0a4;
-    --d--border: #d5d5da;
-    --d--faded: #efeff3;
-    --d--element: #f5f6f8;
-    --d--element--accent: #dcdce1;
-    --d--slightly--transparent--element: rgba(194, 194, 204, 0.8);
-    --d--light: #1f1f21;
-    --d--basic: #161617;
+    @include light-mode-variables;
+  }
+
+  .d--dark--mode {
+    color-scheme: dark;
+    @include dark-mode-variables;
+  }
+
+  .d--light--mode {
+    color-scheme: light;
+    @include light-mode-variables;
   }
 }
