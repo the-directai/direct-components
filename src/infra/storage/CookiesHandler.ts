@@ -1,44 +1,39 @@
-const CONSENT_COOKIE = "cookies-consent";
+/**
+ * Class handles storage - cookies, and cookies consent.
+ */
+export interface CookiesHandler {
+    /**
+     * @returns {boolean} are cookies allowed
+     */
+    getConsent(): boolean;
 
-export class CookiesHandler {
-    public getConsent(): boolean {
-        return this.get(CONSENT_COOKIE) === "true";
-    }
+    /**
+     * saves if cookies are allowed.
+     * warn: if u want to remove consent use resetAndClearCookies()
+     * @param {boolean} isAllowed must be set to true to works properly.
+     * @returns {void}
+     */
+    saveConsent(isAllowed: boolean): void;
 
-    public saveConsent() {
-        const d = new Date();
-        d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-        const expires = "expires=" + d.toUTCString();
-        document.cookie = CONSENT_COOKIE + "=" + "true" + ";" + expires + ";path=/";
-    }
+    /**
+     * Method resets all cookies - deletes it and removes consent.
+     * @returns {void}
+     */
+    resetAndClearCookies(): void;
 
-    public resetAndClearCookies() {
-        const cookies = document.cookie.split(";");
+    /**
+     * gets cookie value
+     * @param {string} key cookie name
+     * @returns {string | null} cookie value in string or null if it doesn't exists
+     */
+    get(key: string): string | null;
 
-        for (const cookie of cookies) {
-            const eqPos = cookie.indexOf("=");
-            const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
-    }
-
-    public get(key: string): string | null {
-        const match = document.cookie.match(new RegExp("(^| )" + key + "=([^;]+)"));
-        if (match) {
-            return match[2];
-        } else {
-            return null;
-        }
-    }
-
-    public save(key: string, value: string): void {
-        if (!this.getConsent()) {
-            throw new Error("Cookie consent is required to save cookies.");
-        }
-
-        const d = new Date();
-        d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000);
-        const expires = "expires=" + d.toUTCString();
-        document.cookie = key + "=" + value + ";" + expires + ";path=/";
-    }
+    /**
+     * saves cookie
+     * @param {string} key cookie name
+     * @param {string} value cookie value (content)
+     * @param {number} validDays number of days cookie will be valid
+     * @returns {void}
+     */
+    save(key: string, value: string, validDays: number): void;
 }

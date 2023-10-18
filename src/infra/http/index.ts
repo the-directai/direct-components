@@ -1,7 +1,5 @@
-import Axios from './Axios';
-
 const providers = {
-    Axios: new Axios(),
+    HttpClient: new HttpClient(),
 };
 
-export default providers.Axios;
+export default providers.HttpClient;
