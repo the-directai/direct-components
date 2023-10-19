@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import scss from "rollup-plugin-scss";
 import packageJson from "./package.json" assert { type: 'json' };
+import css from "rollup-plugin-import-css";
 
 
 export default [
@@ -21,7 +22,7 @@ export default [
                 sourcemap: true,
             },
         ],
-        plugins: [resolve(), commonjs(), scss(), typescript({ tsconfig: "./tsconfig.json" })],
+        plugins: [resolve(), commonjs(), css(), scss(), typescript({ tsconfig: "./tsconfig.json" })],
     },
     {
         input: "dist/esm/types/index.d.ts",
