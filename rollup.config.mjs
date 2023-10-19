@@ -6,6 +6,8 @@ import scss from "rollup-plugin-scss";
 import packageJson from "./package.json" assert { type: 'json' };
 import css from "rollup-plugin-import-css";
 import styles from "rollup-plugin-styles";
+import postcss from 'rollup-plugin-postcss';
+import autoprefixer from 'autoprefixer';
 
 
 export default [
@@ -23,11 +25,27 @@ export default [
                 sourcemap: true,
             },
         ],
-        plugins: [resolve(), commonjs(), css(), scss(), styles(), typescript({ tsconfig: "./tsconfig.json" })],
+        plugins: [
+            resolve(),
+            commonjs(),
+            css(),
+            scss(),
+            styles(),
+            typescript({
+                tsconfig: "./tsconfig.json"
+            }),
+            postcss({
+                plugins: [autoprefixer()],
+                sourceMap: true,
+                extract: true,
+                minimize: true
+            }),
+        ],
     },
     {
         input: "dist/esm/types/index.d.ts",
         output: [{ file: "dist/index.d.ts", format: "esm" }],
         plugins: [dts()],
+        external: [/\.css$/, /\.scss$/],
     },
 ];
