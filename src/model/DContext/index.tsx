@@ -11,7 +11,7 @@
  * @author Michał Chruścielski <michalch775@gmail.com>
  */
 
-import "/src/global.scss";
+import "../../global.scss";
 import React from "react";
 
 type DContextProps = {
