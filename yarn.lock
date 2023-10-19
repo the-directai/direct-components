@@ -2450,7 +2450,7 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@rollup/pluginutils@^5.0.1":
+"@rollup/pluginutils@^5.0.1", "@rollup/pluginutils@^5.0.4":
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.0.5.tgz#bbb4c175e19ebfeeb8c132c2eea0ecb89941a66c"
   integrity sha512-6aEYR910NyP73oHiJglti74iRyOwgFU4x3meH/H8OJx6Ry0j6cOVZ5X/wTvub7G7Ao6qaHBEaNsV3GLJkSsF+Q==
@@ -12534,6 +12534,13 @@ rollup-plugin-dts@^6.1.0:
     magic-string "^0.30.4"
   optionalDependencies:
     "@babel/code-frame" "^7.22.13"
+
+rollup-plugin-import-css@^3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-import-css/-/rollup-plugin-import-css-3.3.5.tgz#6fd9368c7d219c97fa404a4478bbfffc763b21ac"
+  integrity sha512-wSfzveEzvUDlVevo70kmVD5Mk785UN55NG4C7VVnrmdE0qZ8apcVVFajyCPfFYSNxq5YkccOcrGUT2T/2HnEcQ==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.4"
 
 rollup-plugin-scss@^4.0.0:
   version "4.0.0"

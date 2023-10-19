@@ -1,5 +1,7 @@
+import HttpClientImpl from "./HttpClientImpl";
+
 const providers = {
-    HttpClient: new HttpClient(),
+    HttpClient: new HttpClientImpl(),
 };
 
 export default providers.HttpClient;
