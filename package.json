@@ -14,21 +14,9 @@
     "url": "https://github.com/the-directai/direct-components"
   },
   "dependencies": {
-    "@rollup/plugin-image": "^3.0.3",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^20.8.4",
-    "@types/react": "^18.2.28",
-    "@types/react-dom": "^18.2.13",
-    "autoprefixer": "^10.4.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "prop-types": "^15.8.1",
     "react-scripts": "5.0.1",
-    "rollup-plugin-import-css": "^3.3.5",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-styles": "^4.0.0",
-    "sass": "^1.69.0",
-    "typescript": "^4.4.2"
+    "sass": "^1.69.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,7 +32,16 @@
     "not dead",
     "not op_mini all"
   ],
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^20.8.4",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-commonjs": "^25.0.5",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
@@ -62,6 +59,7 @@
     "@testing-library/user-event": "^13.2.1",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
+    "autoprefixer": "^10.4.16",
     "babel-cli": "^6.26.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.51.0",
@@ -72,11 +70,15 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
     "prettier": "^3.0.3",
-    "prop-types": "^15.8.1",
     "rollup": "^4.1.4",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-import-css": "^3.3.5",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-styles": "^4.0.0",
     "storybook": "^7.4.6",
+    "typescript": "^4.4.2",
     "webpack": "^5.89.0"
   },
   "types": "dist/index.d.ts"
