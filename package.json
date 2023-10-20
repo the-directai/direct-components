@@ -1,6 +1,6 @@
 {
   "name": "direct-components",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "license": "MIT",
