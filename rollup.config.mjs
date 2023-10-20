@@ -8,7 +8,6 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import image from '@rollup/plugin-image';
 import autoprefixer from "autoprefixer";
 import postcssImport from "postcss-import";
-import cssnano from "cssnano";
 import postcssFontMagician from "postcss-font-magician";
 
 
@@ -36,7 +35,6 @@ export default [
                     postcssImport(),
                     postcssFontMagician(),
                     autoprefixer(),
-                    cssnano(),
                 ],
                 extract: false,
                 autoModules: true,
