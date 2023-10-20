@@ -8,6 +8,17 @@ import styles from "rollup-plugin-styles";
 import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import image from '@rollup/plugin-image';
+import font from "rollup-plugin-font";
+import autoprefixer from "autoprefixer";
+import url from '@rollup/plugin-url';
+import css from "rollup-plugin-css-only";
+import postcssImport from "postcss-import";
+import postcssUrl from "postcss-url";
+import cssnano from "cssnano";
+import postcssPartialImport from "postcss-partial-import";
+import stylelint from "stylelint";
+import postcssFontMagician from "postcss-font-magician";
+import sourcemaps from "rollup-plugin-sourcemaps";
 
 
 export default [
@@ -17,26 +28,35 @@ export default [
             {
                 file: packageJson.main,
                 format: "cjs",
-                sourcemap: false,
+                sourcemap: true,
 
             },
             {
                 file: packageJson.module,
                 format: "esm",
-                sourcemap: false,
+                sourcemap: true,
             },
         ],
         plugins: [
             peerDepsExternal(),
+            postcss({
+                use: ["sass"],
+                plugins: [
+                    postcssImport(),
+                    postcssFontMagician(),
+                    autoprefixer(),
+                    //cssnano(),
+                ],
+                extract: true,
+                autoModules: true,
+                sourceMap: true
+            }),
             resolve(),
             commonjs(),
-            scss(),
-            styles(),
             typescript({
                 tsconfig: "./tsconfig.json"
             }),
-            postcss(),
-            image()
+            image(),
         ],
         external: ["react", "react-dom", "styled-components"],
     },
