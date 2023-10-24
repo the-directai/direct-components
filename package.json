@@ -74,6 +74,8 @@
     "postcss-font-magician": "^3.0.0",
     "postcss-import": "^15.1.0",
     "prettier": "^3.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^4.1.4",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
