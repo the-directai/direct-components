@@ -1,7 +1,7 @@
 import { CookiesHandlerImpl } from "./CookiesHandlerImpl";
 
 const providers = {
-    CookiesHandler: new CookiesHandlerImpl(),
+    cookiesHandler: new CookiesHandlerImpl(),
 };
 
-export default providers.CookiesHandler;
+export default providers.cookiesHandler;

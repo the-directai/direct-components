@@ -14,7 +14,7 @@
 import "../../global.scss";
 import React from "react";
 
-type DContextProps = {
+type ComponentsContextProps = {
     darkMode?: boolean;
     children?: React.JSX.Element[] | React.JSX.Element | string;
 };
@@ -26,7 +26,7 @@ type DContextProps = {
  * @param {boolean} props.darkMode dark mode switch
  * @param {React.JSX.Element[] | React.JSX.Element | string } [props.children] app content
  */
-function DContext({ darkMode, children }: DContextProps) {
+function ComponentsContext({ darkMode, children }: ComponentsContextProps) {
     return (
         <div
             className={`direct--context 
@@ -37,4 +37,4 @@ function DContext({ darkMode, children }: DContextProps) {
     );
 }
 
-export default DContext;
+export default ComponentsContext;

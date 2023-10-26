@@ -1,10 +1,9 @@
 import { CookiesHandler } from "./CookiesHandler";
-
-const CONSENT_COOKIE = "cookies-consent";
+import configRegister from "../../config/configRegister";
 
 export class CookiesHandlerImpl implements CookiesHandler {
     public getConsent(): boolean {
-        return this.get(CONSENT_COOKIE) === "true";
+        return this.get(configRegister.getConfig().cookieNames.cookiesConsent) === "true";
     }
 
     public saveConsent(isAllowed: boolean): void {
@@ -21,7 +20,8 @@ export class CookiesHandlerImpl implements CookiesHandler {
         const expires = "expires=" + d.toUTCString();
 
         //saves cookie
-        document.cookie = CONSENT_COOKIE + "=" + "true" + ";" + expires + ";path=/";
+        document.cookie =
+            configRegister.getConfig().cookieNames.cookiesConsent + "=" + "true" + ";" + expires + ";path=/";
     }
 
     public resetAndClearCookies(): void {
@@ -61,5 +61,9 @@ export class CookiesHandlerImpl implements CookiesHandler {
 
         // saves cookie
         document.cookie = key + "=" + value + ";" + expires + ";path=/";
+    }
+
+    public delete(key: string): void {
+        document.cookie = key + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }
