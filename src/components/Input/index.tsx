@@ -6,7 +6,7 @@ type InputProps = {
     error: boolean;
     [props: string]: unknown;
 };
-function Input(
+function Input(  
     { className = "", error = false, ...props }: InputProps,
     ref: React.LegacyRef<HTMLInputElement> | undefined,
 ) {

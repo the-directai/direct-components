@@ -5,7 +5,7 @@ type ButtonProps = {
     children?: React.JSX.Element | React.JSX.Element[] | string;
     className: string;
     secondary: boolean;
-    [props: string]: unknown;
+    [props: string]: unknown;  
 };
 
 function Button(
