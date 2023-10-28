@@ -2,10 +2,10 @@ import { AxiosResponse } from "axios";
 
 /**
  * Http request frame
- * @property {string} url
- * @property {unknown} [data] data to send, preferred an object
- * @property {object} [params] uri params
- * @property {object} [headers] request headers
+ * @param {string} url
+ * @param {unknown} [data] data to send, preferred an object
+ * @param {object} [params] uri params
+ * @param {object} [headers] request headers
  */
 export type HttpRequest = {
     url: string;
@@ -16,11 +16,11 @@ export type HttpRequest = {
 
 /**
  * Vanilla request - with method specified
- * @property {string} url
- * @property {unknown} [data] data to send, preferred an object
- * @property {object} [params] uri params
- * @property {object} [headers] request headers
- * @property {string} method http method
+ * @param {string} url
+ * @param {unknown} [data] data to send, preferred an object
+ * @param {object} [params] uri params
+ * @param {object} [headers] request headers
+ * @param {string} method http method
  */
 export type VanillaHttpRequest = {
     url: string;
@@ -32,7 +32,7 @@ export type VanillaHttpRequest = {
 
 /**
  * Data (body) of sign in attempt request
- * @property {string} email used as login
+ * @param {string} email used as login
  */
 export type SignInAttemptData = {
     email: string;
@@ -40,9 +40,9 @@ export type SignInAttemptData = {
 
 /**
  * Sign in request parameters
- * @property {SignInAttemptData} data data to send
- * @property {string} [method="POST"] request method
- * @property {(response: AxiosResponse) => boolean} [checkSuccess] check and return if succeed
+ * @param {SignInAttemptData} data data to send
+ * @param {string} [method="POST"] request method
+ * @param {(response: AxiosResponse) => boolean} [checkSuccess] check and return if succeed
  */
 export type SignInAttemptRequestData = {
     data: SignInAttemptData;
@@ -57,8 +57,8 @@ export type SignInAttemptRequest = HttpRequest & SignInAttemptRequestData;
 
 /**
  * Data (body) of email verification request
- * @property {string} email
- * @property {string} code code from email
+ * @param {string} email
+ * @param {string} code code from email
  */
 export type SignInEmailCodeData = {
     email: string;
@@ -67,9 +67,9 @@ export type SignInEmailCodeData = {
 
 /**
  * Sign in response data
- * @property {string} accessToken
- * @propert {string} refreshToken
- * @property {[properties: string]: unknown}
+ * @param {string} accessToken user access token
+ * @param {string} refreshToken user refresh token
+ * @param {[properties: string]: unknown} [] any other properties
  */
 export type SignInEmailCodeResponse = {
     accessToken: string;
@@ -80,9 +80,9 @@ export type SignInEmailCodeResponse = {
 
 /**
  * Sign in request parameters
- * @property {SignInEmailCodeData} data data to send
- * @property {string} [method="POST"] request method (can be override)
- * @property {(response: AxiosResponse) => boolean} [checkSuccess] check and return success
+ * @param {SignInEmailCodeData} data data to send
+ * @param {string} [method="POST"] request method (can be overridden)
+ * @param {(response: AxiosResponse) => boolean} [checkSuccess] check and return success
  */
 export type SignInEmailCodeRequestData = {
     data: SignInEmailCodeData;
@@ -94,6 +94,36 @@ export type SignInEmailCodeRequestData = {
  * Sign in email code verification parameters
  */
 export type SignInEmailCodeRequest = HttpRequest & SignInEmailCodeRequestData;
+
+/**
+ * Response for complete data request. This response type may be overridden.
+ * @param {boolean} initialized is (or was) user account initialized
+ * @param {[properties: string]: unknown} [] any other properties
+ */
+export type SignInCompleteDataResponse = {
+    initialized: boolean;
+    [properties: string]: unknown;
+};
+
+/**
+ * Data to complete user information request.
+ * @param {string} [method] http method
+ * @param {(response: AxiosResponse) => SignInCompleteDataResponse} [transformReponse] transform response to get body
+ * in proper type. It is used to infer if account is initialized. If this information is not provided
+ * initialization state does not change
+ * @param {(response: AxiosResponse) => boolean} [checkSuccess] check if data was provided. used only to return proper
+ * value in success property.
+ */
+export type SignInCompleteDataRequestData = {
+    method?: string;
+    transformResponse?: (response: AxiosResponse) => SignInCompleteDataResponse;
+    checkSuccess?: (response: AxiosResponse) => boolean;
+};
+
+/**
+ * Request to fill user information (initialize), before user can start using app.
+ */
+export type SignInCompleteDataRequest = SignInCompleteDataRequestData & HttpRequest;
 
 /**
  * Sign out request parameters
@@ -110,9 +140,18 @@ export type SignOutRequestData = {
  */
 export type SignOutRequest = SignOutRequestData & HttpRequest;
 
-export type DirectStatusResponse = {
+/**
+ * Response frame.
+ * @param {boolean} succeed was request successful.
+ * @param {AxiosResponse<ResponseType>} response actual axios response.
+ * @param {boolean | null} initialized is user account initialized now. null if user is not signed in.
+ * @param {boolean} signedIn is user signed in now
+ */
+export type DirectStatusResponse<ResponseType = unknown> = {
     succeed: boolean;
-    response: AxiosResponse;
+    response: AxiosResponse<ResponseType>;
+    initialized: boolean | null;
+    signedIn: boolean;
 };
 
 /**
@@ -121,31 +160,39 @@ export type DirectStatusResponse = {
 export interface HttpEmailCodeSignInClient {
     /**
      * request to attempt sign in
+     * @template {unknown} ResponseType response type defined by user
      * @param {SignInAttemptData} data
      * @returns {Promise<boolean>} was request succeed
      */
-    signInAttempt(data: SignInAttemptRequest): Promise<DirectStatusResponse>;
+    signInAttempt<ResponseType = unknown>(data: SignInAttemptRequest): Promise<DirectStatusResponse<ResponseType>>;
 
     /**
      * request to verify code from email
+     * @template {SignInEmailCodeResponse} ResponseType response type defined by user
      * @param {SignInEmailCodeRequest} data
      * @returns {Promise<boolean>} was user signed in
      */
-    signInVerifyCode(data: SignInEmailCodeRequest): Promise<DirectStatusResponse>;
+    signInVerifyCode<ResponseType = SignInEmailCodeResponse>(
+        data: SignInEmailCodeRequest,
+    ): Promise<DirectStatusResponse<ResponseType>>;
 
     /**
      * request to fill sign in data tin initialize account
-     * @param {HttpRequest} data
-     * @returns {Promise<boolean>} returns if data was filled
+     * @template {SignInCompleteDataResponse} ResponseType response type defined by user
+     * @param {SignInCompleteDataRequest} data
+     * @returns {Promise<DirectStatusResponse>} returns if data was filled
      */
-    signInCompleteData?<ResponseType = unknown>(data: HttpRequest): Promise<AxiosResponse<ResponseType>>;
+    signInCompleteData?<ResponseType = SignInCompleteDataResponse>(
+        data: SignInCompleteDataRequest,
+    ): Promise<DirectStatusResponse<ResponseType>>;
 
     /**
      * request to sign out
+     * @template {unknown} ResponseType response type defined by user
      * @param {SignOutRequest} data
      * @returns {Promise<boolean>} if sign out succeeded
      */
-    signOut(data: SignOutRequest): Promise<DirectStatusResponse>;
+    signOut<ResponseType = unknown>(data: SignOutRequest): Promise<DirectStatusResponse<ResponseType>>;
 
     /**
      * checks if user is signed in
@@ -154,7 +201,14 @@ export interface HttpEmailCodeSignInClient {
     isSignedIn(): boolean;
 
     /**
-     * function runs on sign out event (even if it's by token expiration) and can be overriden.
+     * checks if user is initialized
+     * @returns {boolean} initialized status
+     */
+    isInitialized(): boolean;
+
+    /**
+     * function runs on sign out event (even if it's by token expiration) and can be overridden.
+     *
      * @default deletes cookies
      * @type {() => void | undefined}
      */
@@ -162,10 +216,18 @@ export interface HttpEmailCodeSignInClient {
 
     /**
      * function runs after onSignOut().
+     * can be overridden.
      * @default no action after sign out
      * @type {() => void | undefined}
      */
     afterSignOut: () => void;
+
+    /**
+     * sets base url and saves it to memory. base url will be used as prefix to url used in requests.
+     * @param {string} url
+     * @return {void}
+     */
+    setBaseUrl(url: string): void;
 }
 
 /**
@@ -206,7 +268,7 @@ export interface HttpClient {
 
     /**
      * http request using any method with custom response format
-     * @template {unknown } ResponseType response type defined by user
+     * @template {unknown} ResponseType response type defined by user
      * @param {VanillaHttpRequest} data request parameters and body (method included)
      * @returns {ResponseType} response in custom type
      */

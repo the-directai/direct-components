@@ -42,7 +42,7 @@ export class CookiesHandlerImpl implements CookiesHandler {
 
         // if found return it or return null if didn't
         if (match) {
-            return match[2];
+            return match[2] || null;
         } else {
             return null;
         }

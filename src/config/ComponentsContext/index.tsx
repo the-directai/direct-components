@@ -13,10 +13,12 @@
 
 import "../../global.scss";
 import React from "react";
+import { DirectComponentsConfig } from "../default";
 
 type ComponentsContextProps = {
     darkMode?: boolean;
     children?: React.JSX.Element[] | React.JSX.Element | string;
+    config?: DirectComponentsConfig;
 };
 
 /**
