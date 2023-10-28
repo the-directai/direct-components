@@ -1,6 +1,7 @@
 export type CookiesConfig = {
     accessToken: string;
     refreshToken: string;
+    userInitialized: string;
     cookiesConsent: string;
     baseUrl: string;
 };

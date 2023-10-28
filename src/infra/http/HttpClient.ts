@@ -74,6 +74,7 @@ export type SignInEmailCodeData = {
 export type SignInEmailCodeResponse = {
     accessToken: string;
     refreshToken: string;
+    initialized?: string;
     [properties: string]: unknown;
 };
 
@@ -86,7 +87,7 @@ export type SignInEmailCodeResponse = {
 export type SignInEmailCodeRequestData = {
     data: SignInEmailCodeData;
     method?: string;
-    transformResponse?: (response: AxiosResponse) => boolean;
+    transformResponse?: (response: AxiosResponse) => SignInEmailCodeResponse;
 };
 
 /**
@@ -109,6 +110,11 @@ export type SignOutRequestData = {
  */
 export type SignOutRequest = SignOutRequestData & HttpRequest;
 
+export type DirectStatusResponse = {
+    succeed: boolean;
+    response: AxiosResponse;
+};
+
 /**
  * Authentication http client
  */
@@ -118,14 +124,14 @@ export interface HttpEmailCodeSignInClient {
      * @param {SignInAttemptData} data
      * @returns {Promise<boolean>} was request succeed
      */
-    signInAttempt(data: SignInAttemptRequest): Promise<boolean>;
+    signInAttempt(data: SignInAttemptRequest): Promise<DirectStatusResponse>;
 
     /**
      * request to verify code from email
      * @param {SignInEmailCodeRequest} data
      * @returns {Promise<boolean>} was user signed in
      */
-    signInVerifyCode(data: SignInEmailCodeRequest): Promise<boolean>;
+    signInVerifyCode(data: SignInEmailCodeRequest): Promise<DirectStatusResponse>;
 
     /**
      * request to fill sign in data tin initialize account
@@ -139,7 +145,7 @@ export interface HttpEmailCodeSignInClient {
      * @param {SignOutRequest} data
      * @returns {Promise<boolean>} if sign out succeeded
      */
-    signOut(data: SignOutRequest): Promise<boolean>;
+    signOut(data: SignOutRequest): Promise<DirectStatusResponse>;
 
     /**
      * checks if user is signed in
