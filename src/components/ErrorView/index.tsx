@@ -3,13 +3,12 @@ import styles from "./styles.module.scss";
 import { useRouteError } from "react-router-dom";
 
 function ErrorView() {
-    const error = useRouteError();
+    const error: unknown = useRouteError();
     return(
         <div className={styles.holder}>
             <main>
                 <p className={styles.error_ID}>{error.messageId}</p>
-                {/* there gon be hr or something */}
-                
+
                 <p className={styles.explain_text_one}>Something unexpected happened.</p>
                 <p className={styles.explain_text_two}>Sometimes we can’t predict everything. We’re sorry.</p>
                 
