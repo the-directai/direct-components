@@ -9,6 +9,8 @@ import {
     SignInCompleteDataRequest,
     SignInCompleteDataResponse,
     HttpRequest,
+    RefreshSessionRequest,
+    RefreshSessionResponse,
 } from "./HttpClient";
 import { AxiosResponse } from "axios";
 import { HttpClientImpl } from "./HttpClientImpl";
@@ -17,12 +19,14 @@ import configRegister from "../../config/configRegister";
 
 export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAuthClient {
     private _baseUrl: string | undefined;
+    private _refreshSessionUrl: string | undefined;
 
     constructor() {
         super();
 
-        // if base url is set loads it to memory
+        // if config is set loads it to memory
         this._baseUrl = storage.get(configRegister.getConfig().cookieNames.baseUrl) ?? undefined;
+        this._refreshSessionUrl = storage.get(configRegister.getConfig().cookieNames.refreshSessionUrl) ?? undefined;
     }
 
     setBaseUrl(url: string) {
@@ -30,8 +34,39 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
         this._baseUrl = url;
     }
 
+    private buildUrl(path: string): string {
+        if (!this._baseUrl) {
+            return path;
+        }
+
+        if (this._baseUrl.endsWith("/")) {
+            this._baseUrl = this._baseUrl.slice(0, -1);
+            return this.buildUrl(path);
+        }
+
+        if (!path.startsWith("/")) {
+            path = "/" + path;
+        }
+
+        return this._baseUrl + path;
+    }
+
+    setRefreshSessionUrl(url: string, addBaseUrl = false) {
+        if (addBaseUrl) {
+            url = this.buildUrl(url);
+        }
+
+        storage.save(configRegister.getConfig().cookieNames.refreshSessionUrl, url);
+
+        this._refreshSessionUrl = url;
+    }
+
     get baseUrl() {
         return this._baseUrl;
+    }
+
+    get refreshSessionUrl() {
+        return this._refreshSessionUrl;
     }
 
     isSignedIn(): boolean {
@@ -111,7 +146,31 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
             data.headers.Authorization = token;
         }
 
-        return super.request<ResponseType>(data);
+        return super
+            .request<ResponseType>(data)
+            .then((response) => {
+                return response;
+            })
+            .catch(async (error) => {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                if (error.response && error.response.status === 401) {
+                    if (storage.get(configRegister.getConfig().cookieNames.refreshToken) !== null) {
+                        if (this._refreshSessionUrl) {
+                            // todo handle remove token after fails
+                            const refreshResponse = await this.refreshSession({ url: this._refreshSessionUrl });
+                            if (refreshResponse.succeed) {
+                                return super.request<ResponseType>(data);
+                            }
+                        } else {
+                            console.warn("Url refresh session is not set. Unauthorized.");
+                        }
+                    } else {
+                        this.handleSignOut();
+                    }
+                }
+
+                throw error;
+            });
     }
 
     signInAttempt<ResponseType = unknown>(data: SignInAttemptRequest): Promise<DirectStatusResponse<ResponseType>> {
@@ -126,7 +185,7 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
         }
 
         // makes request and returns success status and response
-        return this.request<ResponseType>(data as VanillaHttpRequest).then((response) => {
+        return super.request<ResponseType>(data as VanillaHttpRequest).then((response) => {
             let succeed: boolean;
 
             if (data.checkSuccess) {
@@ -182,7 +241,7 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
             data.method = "POST";
         }
 
-        return this.request<ResponseType>(data as VanillaHttpRequest).then((response) => {
+        return super.request<ResponseType>(data as VanillaHttpRequest).then((response) => {
             if (data.transformResponse) {
                 try {
                     const transformedResponse = data.transformResponse(response);
@@ -224,7 +283,7 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
         storage.save(configRegister.getConfig().cookieNames.refreshToken, data.refreshToken);
 
         if (data.initialized) {
-            storage.save(configRegister.getConfig().cookieNames.userInitialized, data.initialized);
+            storage.save(configRegister.getConfig().cookieNames.userInitialized, data.initialized.toString());
         }
     }
 
@@ -250,11 +309,15 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
                 return this.returnDirectResponseHandler(false, response);
             }
 
-            this.onSignOut();
-            this.afterSignOut();
+            this.handleSignOut();
 
             return this.returnDirectResponseHandler(true, response);
         });
+    }
+
+    private handleSignOut() {
+        this.onSignOut();
+        this.afterSignOut();
     }
 
     onSignOut = () => {
@@ -264,4 +327,49 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
     };
 
     afterSignOut = () => void 0;
+
+    refreshSession<ResponseType = RefreshSessionResponse>(
+        data: RefreshSessionRequest,
+    ): Promise<DirectStatusResponse<ResponseType>> {
+        if (data.method === undefined) {
+            data.method = "POST";
+        }
+
+        return super
+            .request<ResponseType>(data as VanillaHttpRequest)
+            .then((response) => {
+                let body: RefreshSessionResponse;
+
+                // retrieve data (if wrong format error will be thrown)
+                if (data.transformResponse) {
+                    body = data.transformResponse(response);
+                } else {
+                    body = response.data as RefreshSessionResponse;
+                }
+
+                // save data
+                this.saveSuccessfulRefreshSession(body);
+
+                // enjoy saved data, when code runs to here theres no other option than success
+                return this.returnDirectResponseHandler(true, response);
+            })
+            .then((response) => response)
+            .catch((error) => {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                if (error.response && error.response.status === 401) {
+                    this.handleSignOut();
+                }
+
+                throw error;
+            });
+    }
+
+    private saveSuccessfulRefreshSession(data: RefreshSessionResponse) {
+        storage.save(configRegister.getConfig().cookieNames.accessToken, data.accessToken);
+        storage.save(configRegister.getConfig().cookieNames.refreshToken, data.refreshToken);
+
+        if (data.initialized) {
+            storage.save(configRegister.getConfig().cookieNames.userInitialized, data.initialized.toString());
+        }
+    }
 }

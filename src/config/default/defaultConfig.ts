@@ -7,6 +7,7 @@ const defaultConfig: DirectComponentsConfig = {
         userInitialized: "dc-user-initialized",
         cookiesConsent: "dc-cookies-consent",
         baseUrl: "dc-base-url",
+        refreshSessionUrl: "dc-refresh-session-url",
     },
 };
 

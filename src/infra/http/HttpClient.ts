@@ -69,12 +69,13 @@ export type SignInEmailCodeData = {
  * Sign in response data
  * @param {string} accessToken user access token
  * @param {string} refreshToken user refresh token
+ * @param {boolean} [initialized] is user initialized
  * @param {[properties: string]: unknown} [] any other properties
  */
 export type SignInEmailCodeResponse = {
     accessToken: string;
     refreshToken: string;
-    initialized?: string;
+    initialized?: boolean;
     [properties: string]: unknown;
 };
 
@@ -155,6 +156,40 @@ export type DirectStatusResponse<ResponseType = unknown> = {
 };
 
 /**
+ * Data for refresh session request. Refresh token is automatically retrieved from cookies.
+ * To add refresh token (if don't have any) make proper request to sign in and transform data correctly.
+ * Token will be saved from transformed data.
+ * @param {string} [method] http method
+ * @param {(response: AxiosResponse) => RefreshSessionResponse} [transformReponse] transform response to get body
+ * in proper type. It is used to get token if body returned in other format than default. Refresh token will be
+ * **automatically** saved.
+ */
+export type RefreshSessionRequestData = {
+    method?: string;
+    transformResponse?: (response: AxiosResponse) => RefreshSessionResponse;
+};
+
+/**
+ * request data to refresh session.
+ */
+export type RefreshSessionRequest = RefreshSessionRequestData & HttpRequest;
+
+/**
+ * Data which should be default returned by this request. Alternatively it can be determined
+ * from transformResponse function
+ * @param {string} accessToken user access token
+ * @param {string} refreshToken user refresh token
+ * @param {boolean} [initialized] is user initialized
+ * @param {[properties: string]: unknown} [] optional additional properties
+ */
+export type RefreshSessionResponse = {
+    refreshToken: string;
+    accessToken: string;
+    initialized?: boolean;
+    [properties: string]: unknown;
+};
+
+/**
  * Authentication http client
  */
 export interface HttpEmailCodeSignInClient {
@@ -228,6 +263,15 @@ export interface HttpEmailCodeSignInClient {
      * @return {void}
      */
     setBaseUrl(url: string): void;
+
+    /**
+     * refresh session - get and save new access token
+     *
+     * @param data
+     */
+    refreshSession<ResponseType = RefreshSessionResponse>(
+        data: RefreshSessionRequest,
+    ): Promise<DirectStatusResponse<ResponseType>>;
 }
 
 /**

@@ -4,6 +4,7 @@ export type CookiesConfig = {
     userInitialized: string;
     cookiesConsent: string;
     baseUrl: string;
+    refreshSessionUrl: string;
 };
 
 export type DirectComponentsConfig = {
