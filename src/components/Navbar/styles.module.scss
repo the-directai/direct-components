@@ -15,7 +15,7 @@
 
   .nav_content {
     width: 100%;
-    max-width: 50rem;
+    max-width: 82rem;
     min-height: 100%;
 
     display: flex;
@@ -29,8 +29,14 @@
 
 
       .links {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
         display: flex;
         gap: 0.75rem;
+        align-items: center;
+
       }
 
       @media screen and (max-width: 833px) {
@@ -39,43 +45,44 @@
         }
       }
 
-
       .branding {
         display: flex;
         gap: 0.75rem;
         align-items: center;
+        margin: 0.5rem 1rem;
+      }
 
-        .direct_logo {
-          width: 1rem;
-          height: 1rem;
-
-          display: flex;
-          justify-content: space-between;
-          align-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-
-          .direct_square {
-            background: var(--d--basic);
-
-            width: 0.4rem;
-            height: 0.4rem;
-          }
-        }
-
-        .direct_name {
-          color: var(--d--basic);
-          font-size: 1.1rem;
-          font-weight: 600;
-          text-align: center;
-        }
+      .direct_name {
+        color: var(--d--basic);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
       }
     }
+  }
 
-    .right_group {
-      .svg {
+  .right_group {
+    .icon_holder {
+      margin: 0.5rem 1rem;
+
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      svg {
         fill: var(--d--basic);
       }
+
+      @media screen and (min-width: 834px) {
+        .hamburger_menu {
+          display: none;
+        }
+      }
+
+      .hamburger_menu {
+        cursor: pointer;
+      }
+
     }
   }
 }
