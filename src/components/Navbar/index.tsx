@@ -4,11 +4,13 @@ import NotificationIcon from "./assets/NotificationIcon/NotificationIcon";
 import ProfileIcon from "./assets/ProfileIcon/ProfileIcon";
 import DirectIcon from "./assets/DirectIcon/DirectIcon";
 import HamburgerIcon from "./assets/HamburgerIcon/HamburgerIcon";
-import React from "react";
+import React, {useState} from "react";
 
 function Navbar() {
-    return <div className={`${styles.main_cointainer} d--component`}>
-        <div className={styles.nav_content}>
+    const [mobileLinksExtended, setMobileLinksExtended] = useState(false);
+    console.log(mobileLinksExtended);
+    return <div className={`${styles.main_container} d--component`}>
+        <div className={`${styles.nav_content} ${mobileLinksExtended ? styles.links_extended : ""}`}>
             <div className={styles.left_group}>
                 <div className={styles.branding}>
                     <DirectIcon />
@@ -17,7 +19,7 @@ function Navbar() {
                     </div>
                 </div>
 
-                <ul className={styles.links}>
+                <ul className={`${styles.links} ${mobileLinksExtended ? styles.links_extended : ""}`}>
                     <a href="https://media.tenor.com/7953eR2iLQMAAAAd/nesmog_floppa.gif">Important</a>
                     <a href="https://media.tenor.com/7953eR2iLQMAAAAd/nesmog_floppa.gif">Important</a>
                     <a href="https://media.tenor.com/7953eR2iLQMAAAAd/nesmog_floppa.gif">Important</a>
@@ -30,8 +32,7 @@ function Navbar() {
                 <div className={styles.icon_holder}>
                     <NotificationIcon/>
                     <ProfileIcon/>
-                    <HamburgerIcon onClick={() => console.log("elo")} className={styles.hamburger_menu}/>
-                    {/* TODO: Show mobile fullscreen menu. */}
+                    <HamburgerIcon onClick={() => setMobileLinksExtended(!mobileLinksExtended)} className={styles.hamburger_menu}/>
                 </div>
             </div>
         </div>
