@@ -1,0 +1,46 @@
+$component-background: #161617;
+$font-color: #E5E9EC;
+
+.holder_big{
+    background-color: $component-background;
+    color: $font-color;
+    height: 14.5rem;
+    width: 100%;
+    font-family: Inter, serif  ;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0em;
+    display: flex;
+    flex-direction: column;
+
+    div{
+        display: flex;
+    }
+    
+    ul, li {
+        list-style: none;
+        flex-direction: column;
+    }
+    //space around w div na listy i space around divy w ktorych sa lwistyŃ™™Ń
+    .list_container_big{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+    }
+
+    .list2{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.title_li{
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+}
