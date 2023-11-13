@@ -164,9 +164,9 @@ export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAu
                         } else {
                             console.warn("Url refresh session is not set. Unauthorized.");
                         }
-                    } else {
-                        this.handleSignOut();
                     }
+
+                    this.handleSignOut();
                 }
 
                 throw error;
