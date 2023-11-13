@@ -9,6 +9,7 @@ import image from '@rollup/plugin-image';
 import autoprefixer from "autoprefixer";
 import postcssImport from "postcss-import";
 import postcssFontMagician from "postcss-font-magician";
+import json from '@rollup/plugin-json';
 
 
 export default [
@@ -43,6 +44,7 @@ export default [
             }),
             resolve(),
             commonjs(),
+            json(),
             typescript({
                 tsconfig: "./tsconfig.json"
             }),
