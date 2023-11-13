@@ -1,6 +1,6 @@
 {
   "name": "direct-components",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "url": "https://github.com/the-directai/direct-components"
   },
   "dependencies": {
+    "axios": "^1.5.1",
     "prop-types": "^15.8.1",
     "react-scripts": "5.0.1",
     "sass": "^1.69.0"

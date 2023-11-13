@@ -36,4 +36,11 @@ export interface CookiesHandler {
      * @returns {void}
      */
     save(key: string, value: string, validDays: number): void;
+
+    /**
+     * deletes cookie if exists
+     * @param {string }key cookie key
+     * @returns {void}
+     */
+    delete(key: string): void;
 }

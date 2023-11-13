@@ -1,7 +1,10 @@
-import HttpClientImpl from "./HttpClientImpl";
+import { HttpClientImpl } from "./HttpClientImpl";
+import HttpAuthClientImpl from "./HttpAuthClientImpl";
 
 const providers = {
-    HttpClient: new HttpClientImpl(),
+    httpAuthClient: new HttpAuthClientImpl(),
+    httpClient: new HttpClientImpl(),
 };
 
-export default providers.HttpClient;
+export const httpAuthClient = providers.httpAuthClient;
+export const httpClient = providers.httpClient;
