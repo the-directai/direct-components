@@ -1,0 +1,118 @@
+.main_container {
+  min-width: 100vw;
+  height: 4rem;
+
+  background: var(--d--slightly--transparent--element);
+
+  display: flex;
+  justify-content: center;
+
+  a {
+    color: var(--d--basic);
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+
+  .nav_content {
+    width: 100%;
+    max-width: 82rem;
+    min-height: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .left_group {
+      display: flex;
+      gap: 0.75rem;
+      flex-grow: 1;
+
+
+      .links {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      @media screen and (max-width: 833px) {
+        .links {
+          //display: none;
+          height: 0;
+          background: var(--d--slightly--transparent--element);
+          a {
+            display: none;
+          }
+        }
+
+        .links_extended {
+          display: flex;
+          align-items: start;
+
+          position: fixed;
+
+          padding-left: 1rem;
+          gap: 1rem;
+
+          background: var(--d--background);
+          height: 100vh;
+          min-width: 100vw;
+          min-height: 100vh;
+          flex-direction: column;
+
+          a {
+            display: block;
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+      .branding {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        margin: 0.5rem 1rem;
+      }
+
+      .direct_name {
+        color: var(--d--basic);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+  }
+
+  .nav_content.links_extended {
+    align-items: start;
+  }
+
+  .right_group {
+    .icon_holder {
+      margin: 0.5rem 1rem;
+
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      svg {
+        fill: var(--d--basic);
+      }
+
+      @media screen and (min-width: 834px) {
+        .hamburger_menu {
+          display: none;
+        }
+      }
+
+      .hamburger_menu {
+        cursor: pointer;
+        z-index: 1;
+      }
+
+    }
+  }
+}

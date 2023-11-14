@@ -1,0 +1,14 @@
+.hamburger_icon {
+  width: 1.25rem;
+  height: 0.625rem;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  .line {
+    width: 1.25rem;
+    height: 0.125rem;
+    background: var(--d--basic);
+  }
+}
