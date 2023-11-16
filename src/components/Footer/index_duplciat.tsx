@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // wszystkie tablice powinny byc w miejscu gdzie footer jest uzywany albo zmienna wybierany i napisac petle for co robi liste w zaleznossci od ilosci komponentow
 
-const bigFooterMainContent= [
+const bigFooterMainContent = [
     {
         title: "Get deeper into DirecrAi",
         content: [
@@ -67,17 +67,18 @@ const footerCaption = {
     ]
 };
 
-function Footer({ isBig, bigFooterMainContent, footerAdditionalText, footerCaption }: { isBig: boolean, bigFooterMainContent: string, footerAdditionalText: string, footerCaption: string }) {
+function Footer({ isBig, bigFooterMainContent, footerAdditionalText, footerCaption }: { isBig: boolean, bigFooterMainContent?: unknown[], footerAdditionalText?: string, footerCaption: string }) {
     if (isBig) {
-        return bigFooter({mainContent: bigFooterMainContent, caption: footerCaption, additionalText: footerAdditionalText });
+        return <bigFooter mainContent = {bigFooterMainContent} caption = {footerCaption} additionalText = {}>
+        //return bigFooter({ mainContent: bigFooterMainContent, caption: footerCaption, additionalText: footerAdditionalText });
     } else {
         return smallFooter({ caption: footerCaption });
     }
 }
 
 
-function bigFooter({mainContent, caption, additionalText
-}: {mainContent: string, caption: string, additionalText: string}) {
+function bigFooter({mainContent, caption, addtionalText
+}: {mainContent: string, caption: string, addtionalText: string}) {
 
     for (const element of mainContent) {
         console.log(element);
@@ -85,7 +86,7 @@ function bigFooter({mainContent, caption, additionalText
     for (const element of caption) {
         console.log(element);
     }
-    for (const element of additionalText) {
+    for (const element of addtionalText) {
         console.log(element);
     }
 
@@ -154,7 +155,7 @@ function bigFooter({mainContent, caption, additionalText
     );
 }
 
-function smallFooter({caption}: {caption: string}) {
+function smallFooter({footerCaption}: {footerCaption: string}) {
     return(
         <footer>
             <div className={styles.holder_small}>
@@ -173,4 +174,4 @@ function smallFooter({caption}: {caption: string}) {
 }
 
 
-export default Footer;
+export default Footer();

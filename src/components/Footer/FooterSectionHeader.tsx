@@ -1,0 +1,16 @@
+import styles from "./styles.module.scss";
+import {Link} from "react-router-dom";
+
+export type FooterSectionHeaderProps = {
+    children: ReactChildren;
+    link?: string | undefined;
+    [key: string]: unknown; // umozliwia userowi dodanie dodatkowych propow (arugmentow)
+}
+
+export function FooterSectionHeader({children, link = undefined, ...props}: FooterSectionHeaderProps) {
+    return (
+        <Link className={styles.footer_bottom} to={link ?? ""} {...props}>
+            {children}
+        </Link>
+    );
+}

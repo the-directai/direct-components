@@ -6,4 +6,4 @@ function LoadingView() {
     );
 }
 
-export default LoadingView;
+export default LoadingView; 
