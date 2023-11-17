@@ -9,7 +9,7 @@ export type FooterSectionHeaderProps = {
 
 export function FooterSectionHeader({children, link = undefined, ...props}: FooterSectionHeaderProps) {
     return (
-        <Link className={styles.footer_bottom} to={link ?? ""} {...props}>
+        <Link className={styles.footer_section_header} to={link ?? ""} {...props}>
             {children}
         </Link>
     );

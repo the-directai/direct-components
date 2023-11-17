@@ -1,6 +1,6 @@
 import {Meta, StoryObj} from "@storybook/react";
 // tu dodac importy, po stworzeniu komponentow (komentarz usun przed pushem)
-import Footer, {FooterSection, FooterSectionHeader} from "./index";
+import Footer, {FooterSection, FooterSectionHeader, FooterSectionElement, FooterColumn, FooterMain, FooterBottom, FooterAdditionalText, FooterCaption, FooterCaptionElement} from "./index";
 
 
 const meta: Meta<typeof Footer> = {
@@ -36,10 +36,10 @@ export const Default: Story = (args: object) => (
                     <FooterSection>
                         <FooterSectionHeader link={"https://mylink.com"}>
                             Example section 2
-                        </FooterSectionHeader link={"https://mylink.com"}>
+                        </FooterSectionHeader>
                         <FooterSectionElement link={"https://mylink.com"}>
                             Link 1
-                        </FooterSectionElement link={"https://mylink.com"}>
+                        </FooterSectionElement>
                         <FooterSectionElement link={"https://mylink.com"}>
                             Link 2
                         </FooterSectionElement>

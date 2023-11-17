@@ -3,43 +3,6 @@ import {Link} from "react-router-dom";
 import styles from "./styles.module.scss";
 
 
-export function FooterSectionElement({children, link = undefined, ...props}: FooterSectionElementProps) {
-    return (
-        <Link className={styles.footer_bottom} to={link ?? ""} {...props}>
-            {children}
-        </Link>
-    );
-}
-
-export function FooterAdditionalText({children, link = undefined, ...props}: FooterAdditionalTextProps) {
-    return (
-        <Link className={styles.footer_bottom} to={link ?? ""} {...props}>
-            {children}
-        </Link>
-    );
-}
-
-export function FooterCaptionElement({children, link = undefined, ...props}: FooterCaptionElementProps) {
-    return (
-        <Link className={styles.footer_bottom} to={link ?? ""} {...props}>
-            {children}
-        </Link>
-    );
-}
-
-export type FooterProps = {
-    children: ReactChildren;
-    [key: string]: unknown;
-}
-
-function Footer({children}: FooterProps) {
-    return (
-        <footer className={styles.footer_big}>
-            {children}
-        </footer>
-    );
-}
-
 export default Footer;
 
 // <div className={styles.holder_big}>
