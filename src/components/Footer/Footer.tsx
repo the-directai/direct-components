@@ -1,9 +1,14 @@
-import React from "react";
-import {Link} from "react-router-dom";
-import styles from "./styles.module.scss";
-
+// import React from "react";
+// import {Link} from "react-router-dom";
+// import styles from "./styles.module.scss";
+function Footer(children: ReactChildren) {
+    return (
+        <div>{children}</div>
+    );
+}
 
 export default Footer;
+
 
 // <div className={styles.holder_big}>
 //     <div className={styles.list_container_big}>
