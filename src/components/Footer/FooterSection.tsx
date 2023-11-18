@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 export type FooterSectionProps = {
     children: ReactChildren;
-    [key: string]: unknown; // umozliwia userowi dodanie dodatkowych propow (arugmentow)
+    [key: string]: unknown;
 }
 
 export function FooterSection({children}: FooterSectionProps) {

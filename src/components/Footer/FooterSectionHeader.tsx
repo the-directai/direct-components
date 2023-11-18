@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 export type FooterSectionHeaderProps = {
     children: ReactChildren;
     link?: string | undefined;
-    [key: string]: unknown; // umozliwia userowi dodanie dodatkowych propow (arugmentow)
+    [key: string]: unknown;
 }
 
 export function FooterSectionHeader({children, link = undefined, ...props}: FooterSectionHeaderProps) {

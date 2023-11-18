@@ -1,5 +1,4 @@
 import {Meta, StoryObj} from "@storybook/react";
-// tu dodac importy, po stworzeniu komponentow (komentarz usun przed pushem)
 import Footer, {FooterSection, FooterSectionHeader, FooterSectionElement, FooterColumn, FooterMain, FooterBottom, FooterAdditionalText, FooterCaption, FooterCaptionElement} from "./index";
 import {Route, Router, Routes} from "react-router-dom";
 
@@ -15,65 +14,64 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Default: Story = (args: object) => (
-        <Router>
+        <Router location={undefined} navigator={undefined}>
             <Routes>
                 <Route path="/" element= {
                     <Footer {...args} >
                         <FooterMain>
                             <FooterColumn>
                                 <FooterSection>
-                                    <FooterSectionHeader link={"https://mylink.com"}>
+                                    <FooterSectionHeader NavLink={"https://myNavLink.com"}>
                                         Example section
                                     </FooterSectionHeader>
-                                    <FooterSectionElement link={"https://mylink.com"}>
-                                        Link 1
+                                    <FooterSectionElement NavLink={"https://myNavLink.com"}>
+                                        NavLink 1
                                     </FooterSectionElement>
-                                    <FooterSectionElement link={"https://mylink.com"}>
-                                        Link 2
+                                    <FooterSectionElement NavLink={"https://myNavLink.com"}>
+                                        NavLink 2
                                     </FooterSectionElement>
-                                    <FooterSectionElement link={"https://mylink.com"}>
-                                        Link 3
+                                    <FooterSectionElement NavLink={"https://myNavLink.com"}>
+                                        NavLink 3
                                     </FooterSectionElement>
                                 </FooterSection>
                             </FooterColumn>
                             <FooterColumn>
                                 <FooterSection>
-                                    <FooterSectionHeader link={"https://mylink.com"}>
+                                    <FooterSectionHeader NavLink={"https://myNavLink.com"}>
                                         Example section 2
                                     </FooterSectionHeader>
-                                    <FooterSectionElement link={"https://mylink.com"}>
-                                        Link 1
+                                    <FooterSectionElement NavLink={"https://myNavLink.com"}>
+                                        NavLink 1
                                     </FooterSectionElement>
-                                    <FooterSectionElement link={"https://mylink.com"}>
-                                        Link 2
+                                    <FooterSectionElement NavLink={"https://myNavLink.com"}>
+                                        NavLink 2
                                     </FooterSectionElement>
-                                    <FooterSectionElement link={"https://mylink.com"}>
-                                        Link 3
+                                    <FooterSectionElement NavLink={"https://myNavLink.com"}>
+                                        NavLink 3
                                     </FooterSectionElement>
                                 </FooterSection>
                             </FooterColumn>
                         </FooterMain>
                         <FooterBottom>
-                            <FooterAdditionalText link={"https://mylink.com"}>
+                            <FooterAdditionalText NavLink={"https://myNavLink.com"}>
                                 Text us or sth
                             </FooterAdditionalText>
                             <FooterCaption>
-                                <FooterCaptionElement link={"https://mylink.com"}>
+                                <FooterCaptionElement NavLink={"https://myNavLink.com"}>
                                     Copyright
                                 </FooterCaptionElement>
-                                <FooterCaptionElement link={"https://mylink.com"}>
-                                    Cool link
+                                <FooterCaptionElement NavLink={"https://myNavLink.com"}>
+                                    Cool NavLink
                                 </FooterCaptionElement>
-                                <FooterCaptionElement link={"https://mylink.com"}>
-                                    Cool link 2
+                                <FooterCaptionElement NavLink={"https://myNavLink.com"}>
+                                    Cool NavLink 2
                                 </FooterCaptionElement>
                             </FooterCaption>
                         </FooterBottom>
                     </Footer>
-                    </Router>
                 } />
             </Routes>
-
+        </Router>
 
 );
 
