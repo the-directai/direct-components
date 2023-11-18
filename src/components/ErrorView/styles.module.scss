@@ -7,6 +7,17 @@
     font-family: Inter, sans-serif;
     transition: all 0.5s ease;
 
+    .error_status {
+        font-size: 3.2rem;
+    }
+
+    .div_as_hr {
+        margin-top: 0.5rem;
+         width: 16rem;
+         height: 0.0625rem;
+         background-color: #FFFFFF;
+    }
+
     .error_ID{
       color: #E5E9EC;
       font-size: 3rem;
@@ -41,6 +52,39 @@
         padding-top: 1rem;
     }
 
+    .support_button_holder { 
+        display: flex;
+        align-items: center;
+
+        .send_to_support, .download_report {
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 8rem;
+            height: 2rem;
+            margin-right: 1rem;
+        }
+        
+        .send_to_support {
+            background-color: #E5E9EC;
+            color: #161617;
+        }
+    
+        .download_report{
+            border: 1px solid #E5E9EC;
+        }
+    
+        .send_to_support:hover{
+            background-color:  #a0a3a5;;
+        } 
+    
+        .download_report:hover {
+            background-color: #313133;
+        }    
+    }
+
     .temp_button_home, .temp_button_go_back {
         display: inline-block;
         padding: 0.625rem 0.125rem;
@@ -55,33 +99,5 @@
     }
     .temp_button_home:hover, .temp_button_go_back:hover{
         color: grey;
-    }
-
-    .send_to_support, .download_report {
-        cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-        display: inline-block;
-        width: 8rem;
-        height: 2rem;
-        margin-right: 1rem;
-        padding: 0.5rem;
-    }
-
-    .send_to_support {
-        background-color: #E5E9EC;
-        color: #161617;
-    }
-
-    .download_report{
-        border: 1px solid #E5E9EC;
-    }
-
-    .send_to_support:hover{
-        background-color:  #a0a3a5;;
-    } 
-
-    .download_report:hover {
-        background-color: #313133;
     }
 }

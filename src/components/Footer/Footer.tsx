@@ -1,9 +1,14 @@
 // import React from "react";
 // import {Link} from "react-router-dom";
 // import styles from "./styles.module.scss";
-function Footer(children: ReactChildren) {
+
+type FooterProps = {
+    children: ReactChildren
+}
+
+function Footer({children, ...props}: FooterProps) {
     return (
-        <div>{children}</div>
+        <div {...props}>{children}</div>
     );
 }
 
