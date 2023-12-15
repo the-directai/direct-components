@@ -101,13 +101,13 @@ export const Default: Story = (args: object) => (
                     <FooterAdditionalText link={"https://mylink.com"}>
                         With any problem feel free to get in touch with us at support@directai.pl
                     </FooterAdditionalText>
+                    <FooterAdditionalText link={"https://mylink.com"}>
+                        <hr/>
+                    </FooterAdditionalText>
                     <FooterCaption>
                         <FooterCaptionElement>
                             Copyright © 2023 DirectAI. All rights reserved.
                         </FooterCaptionElement>
-                        {/* <FooterCaptionElement>
-                            <hr />
-                        </FooterCaptionElement> */}
                         <FooterCaptionElement link={"https://mylink.com"}>
                             Privacy Policy
                         </FooterCaptionElement>
