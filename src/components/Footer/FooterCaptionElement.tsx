@@ -10,7 +10,7 @@ export type FooterCaptionElementProps = {
 
 export function FooterCaptionElement({children, link = undefined, ...props}: FooterCaptionElementProps) {
     return (
-        <Link className={styles.footer_caption_element} to={link ?? ""} {...props}>
+        <Link className={`${styles.footer_caption_element} no_select`} to={link ?? ""} {...props}>
             {children}
         </Link>
     );

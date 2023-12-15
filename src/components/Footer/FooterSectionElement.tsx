@@ -10,7 +10,7 @@ export type FooterSectionElementProps = {
 
 export function FooterSectionElement({children, link = undefined, ...props}: FooterSectionElementProps) {
     return (
-        <Link className={styles.footer_section_element} to={link ?? ""} {...props}>
+        <Link className={`${styles.footer_section_element} no_select`} to={link ?? ""} {...props}>
             {children}
         </Link>
     );

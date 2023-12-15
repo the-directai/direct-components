@@ -1,46 +1,81 @@
-$component-background: #161617;
-$font-color: #E5E9EC;
+@import "../../variables";
+$--background-color: #161617;
+$--font-color: #E5E9EC;
+$--font-color-hover: #12DABB;
+$--font-size-normal: 1rem;
+$--footer-heigth: 12rem;
+$--footer-padding-y: 1rem;
+$--font-weight-normal: 400;
+$--font-weight-header: 600;
 
-.holder_big{
-    background-color: $component-background;
-    color: $font-color;
-    height: 14.5rem;
-    width: 100%;
-    font-family: Inter, serif  ;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14px;
-    letter-spacing: 0em;
+.footer {
+    background-color: $--background-color;
     display: flex;
     flex-direction: column;
-
-    div{
-        display: flex;
-    }
+    font-size: $--font-size-normal;
     
-    ul, li {
-        list-style: none;
+    .footer_section_element, .footer_section_header, .footer_caption_element, .footer_caption_header, .footer_additional_text {
+        color: $--font-color;
+        text-decoration: none;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        &:hover {
+            color: $--font-color-hover;
+        }
+    }
+
+    .footer_main {
+        display: flex;
+        justify-content: center;
+        padding: $--footer-padding-y;
+        
+        //styling everything in columns 
+        .footer_column {
+            //mam przeczucie ze te paddingi ponizej to nie jest dobre rozwiazanie
+            padding-left: 1rem;
+            padding-right: 6rem;        
+        
+            .footer_section {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .footer_section_element {
+                    font-size: $--font-size-normal;
+                    font-weight: $--font-weight-normal;
+                }
+                
+                .footer_section_header {
+                    margin-bottom: 10px;
+                    padding-top: 2rem;
+                    font-size: $--font-size-normal;
+                    font-weight: $--font-weight-header;
+                }
+            }
+        }
+    }
+    .footer_bottom {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 1rem 0 2rem 2rem;
+    
+        .footer_additional_text {
+            font-size: $--font-size-normal;
+            font-weight: $--font-weight-normal;
+        }
+    
+        .footer_caption {
+            padding-right: 1rem;
+            margin-top: 10px;  
+            order: 0;
+    
+            .footer_caption_element {
+                padding: 0 1rem;
+                font-size: $--font-size-normal;
+                font-weight: $--font-weight-normal;
+            }
+        }
     }
-    //space around w div na listy i space around divy w ktorych sa lwistyŃ™™Ń
-    .list_container_big{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-self: stretch;
-    }
-
-    .list2{
-        display: flex;
-        flex-direction: row;
-    }
-}
-
-.title_li{
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 14px;
-    letter-spacing: 0em;
-    text-align: left;
 }

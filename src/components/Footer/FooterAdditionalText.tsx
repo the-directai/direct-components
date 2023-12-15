@@ -10,7 +10,7 @@ export type FooterAdditionalTextProps = {
 
 export function FooterAdditionalText({children, link = undefined, ...props}: FooterAdditionalTextProps) {
     return (
-        <Link className={styles.footer_additional_text} to={link ?? ""} {...props}>
+        <Link className={`${styles.footer_additional_text} no_select`} to={link ?? ""} {...props}>
             {children}
         </Link>
     );
