@@ -30,6 +30,8 @@ $--font-weight-header: 600;
     .footer_main {
         display: flex;
         justify-content: center;
+        width: 100%;
+        max-width: 1200px;
         
         //styling everything in columns 
         .footer_column {
@@ -60,7 +62,8 @@ $--font-weight-header: 600;
         flex-direction: column;
         justify-content: center;
         margin-top: 20px;
-        padding: 2rem 0 2rem 8rem;
+        padding: 2rem 0 2rem 4rem;
+        width: 100%;
     
         .footer_additional_text {
             font-size: $--font-size-normal;
@@ -69,12 +72,19 @@ $--font-weight-header: 600;
             hr {
                 margin-right: 8rem;
                 margin-bottom: 0rem;
-                width: calc(100% - 8rem);
                 //width powinna byc footer main width ale nie waiem jak to zrobic
+            }
+
+            div {
+                width: 80%;
+                max-width: 1000px;
+                height: 0.05rem;
+                background-color: white;
             }
         }
     
         .footer_caption {
+            display: flex;
             margin-top: 10px;  
             order: 0;
             .footer_caption_element {

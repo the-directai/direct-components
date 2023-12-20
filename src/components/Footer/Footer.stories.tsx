@@ -102,7 +102,8 @@ export const Default: Story = (args: object) => (
                         With any problem feel free to get in touch with us at support@directai.pl
                     </FooterAdditionalText>
                     <FooterAdditionalText link={"https://mylink.com"}>
-                        <hr/>
+                        {/* <hr/> */}
+                        <div></div>
                     </FooterAdditionalText>
                     <FooterCaption>
                         <FooterCaptionElement>
