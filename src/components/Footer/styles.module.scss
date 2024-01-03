@@ -95,3 +95,14 @@ $--font-weight-header: 600;
         }
     }
 }
+
+@media screen and (max-width: 53rem) {
+    .footer {
+        background-color: rgb(189, 82, 82);
+        //czemu sie nie zmienia romziar czczionki
+        //zmienic z gita errora naerrora z footera
+        .footer_section_element , .footer_section_header , .footer_caption_element {
+            font-size: 1rem;
+        }
+    }
+}
