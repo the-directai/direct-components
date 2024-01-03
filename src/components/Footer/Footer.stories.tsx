@@ -12,7 +12,7 @@ const meta: Meta<typeof Footer> = {
 export default meta;
 
 type Story = StoryObj<typeof Footer>;
-
+ 
 export const Default: Story = (args: object) => (
         <BrowserRouter>
             <Footer {...args} >
@@ -99,16 +99,13 @@ export const Default: Story = (args: object) => (
                 </FooterMain>
                 <FooterBottom>
                     <FooterAdditionalText link={"https://mylink.com"}>
-                        With any problem feel free to get in touch with us at support@directai.pl
+                    Copyright © 2023 DirectAI. All rights reserved.
                     </FooterAdditionalText>
                     <FooterAdditionalText link={"https://mylink.com"}>
                         {/* <hr/> */}
                         <div></div>
                     </FooterAdditionalText>
                     <FooterCaption>
-                        <FooterCaptionElement>
-                            Copyright © 2023 DirectAI. All rights reserved.
-                        </FooterCaptionElement>
                         <FooterCaptionElement link={"https://mylink.com"}>
                             Privacy Policy
                         </FooterCaptionElement>

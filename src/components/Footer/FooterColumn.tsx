@@ -11,4 +11,4 @@ export function FooterColumn({children}: FooterColumnProps) {
             {children}
         </div>
     );
-}
+} 

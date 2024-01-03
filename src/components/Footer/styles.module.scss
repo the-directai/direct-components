@@ -14,6 +14,11 @@ $--font-weight-header: 600;
     flex-direction: column;
     font-size: $--font-size-normal;
     font-family: Arial, Helvetica, sans-serif;
+
+    * {
+        overflow: hidden;
+        box-sizing: border-box;
+    }
     //zmienic czczionke na inter
 
     .footer_section_element, .footer_section_header, .footer_caption_element, .footer_caption_header, .footer_additional_text {
@@ -29,15 +34,19 @@ $--font-weight-header: 600;
 
     .footer_main {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        justify-items: flex-start;
         width: 100%;
+        flex-wrap: wrap;
         max-width: 1200px;
         
         //styling everything in columns 
         .footer_column {
             //mam przeczucie ze te paddingi ponizej to nie jest dobre rozwiazanie
-            padding: 0 4rem 0 4rem;        
-        
+            padding: 0 4rem 0 4rem;
+            flex: 1;
+            min-width: 11rem;
+
             .footer_section {
                 display: flex;
                 flex-direction: column;
@@ -66,8 +75,10 @@ $--font-weight-header: 600;
         width: 100%;
     
         .footer_additional_text {
+            word-wrap: break-word;
             font-size: $--font-size-normal;
             font-weight: $--font-weight-normal;
+            flex: 1;
 
             hr {
                 margin-right: 8rem;
@@ -85,6 +96,7 @@ $--font-weight-header: 600;
     
         .footer_caption {
             display: flex;
+            flex-wrap: wrap;
             margin-top: 10px;  
             order: 0;
             .footer_caption_element {
@@ -99,10 +111,6 @@ $--font-weight-header: 600;
 @media screen and (max-width: 53rem) {
     .footer {
         background-color: rgb(189, 82, 82);
-        //czemu sie nie zmienia romziar czczionki
-        //zmienic z gita errora naerrora z footera
-        .footer_section_element , .footer_section_header , .footer_caption_element {
-            font-size: 1rem;
-        }
+
     }
 }

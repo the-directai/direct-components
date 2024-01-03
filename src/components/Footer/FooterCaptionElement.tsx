@@ -14,4 +14,4 @@ export function FooterCaptionElement({children, link = undefined, ...props}: Foo
             {children}
         </Link>
     );
-}
+} 

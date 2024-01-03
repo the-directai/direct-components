@@ -11,4 +11,4 @@ export function FooterSection({children}: FooterSectionProps) {
             {children}
         </div>
     );
-}
+} 

@@ -11,4 +11,4 @@ export function FooterMain({children}: FooterMainProps) {
             {children}
         </div>
     );
-}
+} 

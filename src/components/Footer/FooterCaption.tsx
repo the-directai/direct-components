@@ -11,4 +11,4 @@ export function FooterCaption({children}: FooterCaptionProps) {
             {children}
         </div>
     );
-}
+} 

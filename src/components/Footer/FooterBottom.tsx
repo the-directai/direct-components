@@ -11,4 +11,4 @@ export function FooterBottom({children}: FooterBottomProps) {
             {children}
         </div>
     );
-}
+} 

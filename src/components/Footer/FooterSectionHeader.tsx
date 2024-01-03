@@ -13,4 +13,4 @@ export function FooterSectionHeader({children, link = undefined, ...props}: Foot
             {children}
         </Link>
     );
-}
+} 
