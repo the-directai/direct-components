@@ -2,15 +2,14 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
-import packageJson from "./package.json" assert { type: 'json' };
-import postcss from 'rollup-plugin-postcss';
+import packageJson from "./package.json" assert { type: "json" };
+import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import image from '@rollup/plugin-image';
+import image from "@rollup/plugin-image";
 import autoprefixer from "autoprefixer";
 import postcssImport from "postcss-import";
 import postcssFontMagician from "postcss-font-magician";
-import json from '@rollup/plugin-json';
-
+import json from "@rollup/plugin-json";
 
 export default [
     {
@@ -20,7 +19,6 @@ export default [
                 file: packageJson.main,
                 format: "cjs",
                 sourcemap: true,
-
             },
             {
                 file: packageJson.module,
@@ -32,21 +30,17 @@ export default [
             peerDepsExternal(),
             postcss({
                 use: ["sass"],
-                plugins: [
-                    postcssImport(),
-                    postcssFontMagician(),
-                    autoprefixer(),
-                ],
+                plugins: [postcssImport(), postcssFontMagician(), autoprefixer()],
                 extract: false,
                 autoModules: true,
                 sourceMap: true,
-                minimize: true
+                minimize: true,
             }),
             resolve(),
             commonjs(),
             json(),
             typescript({
-                tsconfig: "./tsconfig.json"
+                tsconfig: "./tsconfig.json",
             }),
             image(),
         ],
