@@ -1,0 +1,70 @@
+$--temp-hover-color: rgb(235, 192, 52);
+
+.holder {
+    background-color: rgba(29, 29, 29, 1); //temp
+    width: 40rem; //tmep
+    height: 30rem; // tmep
+    border-radius: 2rem;
+    color: white; // temp
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; // temp
+
+    .title {
+        height: 2.5rem;
+
+        .title_text {
+            padding-top: 0.5rem;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .selector {
+        height: 25rem;
+
+        .screen {
+            height: 100%; // nie wiem czemu to nie zajmuje calego wolnego mijesca
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .prev,
+            .next {
+                &:hover {
+                    color: $--temp-hover-color;
+                }
+            }
+
+            .prev {
+                margin-right: auto;
+                margin-left: 2rem;
+            }
+
+            .next {
+                margin-left: auto;
+                margin-right: 2rem;
+            }
+        }
+    }
+
+
+    .button {
+        height: 2.5rem;
+        display: flex;
+        justify-content: center;
+
+        .button_text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            height: 2.5rem;
+            margin-top: -1rem;
+            background-color: rgb(24, 98, 227);
+            border-radius: 2rem;
+        }
+
+        &:hover {
+            color: $--temp-hover-color;
+        }
+    }
+}

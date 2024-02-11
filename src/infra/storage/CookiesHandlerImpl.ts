@@ -1,5 +1,5 @@
 import { CookiesHandler } from "./CookiesHandler";
-import configRegister from "../../config/configRegister";
+import configRegister from "../../components/WidgetsMenu/config/configRegister";
 
 export class CookiesHandlerImpl implements CookiesHandler {
     public getConsent(): boolean {

@@ -1,5 +1,5 @@
 import { DirectComponentsConfig } from "../default";
-import storage from "../../infra/storage";
+import storage from "../../../../infra/storage";
 import defaultConfig from "../default/defaultConfig";
 
 const CONFIG_COOKIE = "dc-library-config";

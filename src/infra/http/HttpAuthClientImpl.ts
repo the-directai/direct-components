@@ -15,7 +15,7 @@ import {
 import { AxiosResponse } from "axios";
 import { HttpClientImpl } from "./HttpClientImpl";
 import storage from "../storage";
-import configRegister from "../../config/configRegister";
+import configRegister from "../../components/WidgetsMenu/config/configRegister";
 
 export default class HttpAuthClientImpl extends HttpClientImpl implements HttpAuthClient {
     private _baseUrl: string | undefined;
