@@ -2,8 +2,10 @@ $--temp-hover-color: rgb(235, 192, 52);
 
 .holder {
     background-color: rgba(29, 29, 29, 1); //temp
-    width: 40rem; //tmep
-    height: 30rem; // tmep
+    width: 100%; //tmep
+    max-width: 40rem;
+    height: 100%; // tmep
+    max-height: 100%;
     border-radius: 2rem;
     color: white; // temp
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; // temp
@@ -19,7 +21,7 @@ $--temp-hover-color: rgb(235, 192, 52);
     }
 
     .selector {
-        height: 25rem;
+        height: 25rem; // narazie zostnie tak
 
         .screen {
             height: 100%; // nie wiem czemu to nie zajmuje calego wolnego mijesca
