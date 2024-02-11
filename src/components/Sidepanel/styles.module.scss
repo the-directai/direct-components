@@ -1,0 +1,37 @@
+// variables below temp, to change, to add to main file
+$--navbar-vertical-width: 10rem;
+$--background-color: rgb(33, 33, 33);
+$--font-color: rgb(240,240,240);
+$--font-size: 1rem;
+$--font-size-header: 2rem;
+
+.navbar_vertical {
+    width: $--navbar-vertical-width;
+    background-color: $--background-color;
+    height: 100vh;
+    color: $--font-color;
+
+    .navbar_vertical_header a, .navbar_vertical_element a {
+        size: calc($--font-size-header + 2rem);
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-decoration: none;
+        color: $--font-color;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        cursor:default;
+    }
+    .navbar_vertical_element a:hover {
+        color: #ff932f;
+        transition: 0.1s;
+    }
+
+    .navbar_vertical_header {
+        font-size: calc($--font-size-header + 1rem);
+        padding: 1rem;
+    }
+
+    .navbar_vertical_element {
+        padding: 0.2rem 1rem;
+    }
+}
