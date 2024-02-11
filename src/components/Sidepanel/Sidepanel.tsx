@@ -6,7 +6,7 @@ export type SidepanelProps = {
 
 function Sidepanel({children, ...props}: SidepanelProps) {
     return (
-        <div {...props} className={styles.navbar_vertical}>{children}</div>
+        <div {...props} className={styles.sidepanel}>{children}</div>
     );
 }
 

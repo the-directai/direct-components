@@ -1,37 +1,46 @@
 // variables below temp, to change, to add to main file
-$--navbar-vertical-width: 10rem;
-$--background-color: rgb(33, 33, 33);
+$--navbar-vertical-width: 15rem;
+$--background-color: rgb(7, 7, 7);
 $--font-color: rgb(240,240,240);
+$--font-color-hover: #ff932f;
 $--font-size: 1rem;
-$--font-size-header: 2rem;
+$--font-size-header: 1rem;
 
-.navbar_vertical {
+
+.sidepanel {
     width: $--navbar-vertical-width;
     background-color: $--background-color;
     height: 100vh;
     color: $--font-color;
+    font-family: inter;
 
-    .navbar_vertical_header a, .navbar_vertical_element a {
-        size: calc($--font-size-header + 2rem);
+    .sidepanel_logo {
+        margin-left: 1rem;
+        padding: 0.5rem 0 0.5rem 0;
+    }
+
+    .sidepanel_header a, .sidepanel_element a {
         -webkit-user-select: none;
         -ms-user-select: none;
         user-select: none;
         text-decoration: none;
         color: $--font-color;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        cursor:default;
     }
-    .navbar_vertical_element a:hover {
-        color: #ff932f;
+    .sidepanel_element a:hover {
+        color: $--font-color-hover;
         transition: 0.1s;
     }
 
-    .navbar_vertical_header {
-        font-size: calc($--font-size-header + 1rem);
-        padding: 1rem;
+    .sidepanel_header {
+        margin-top: 1rem;
     }
 
-    .navbar_vertical_element {
-        padding: 0.2rem 1rem;
+    .sidepanel_header {
+        font-size: $--font-size-header;
+        margin-left: 2rem;
+    }
+    
+    .sidepanel_element {
+        margin-left: 3.5rem;
     }
 }

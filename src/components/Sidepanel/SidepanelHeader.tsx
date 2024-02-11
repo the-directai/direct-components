@@ -8,7 +8,7 @@ export type SidepanelHeaderProps = {
 
 export function SidepanelHeader({children, link = undefined, ...props}: SidepanelHeaderProps) {
     return (
-        <div className={styles.navbar_vertical_header}>
+        <div className={styles.sidepanel_header}>
             <a href={link ?? ""} {...props}>
                 {children}
             </a>
