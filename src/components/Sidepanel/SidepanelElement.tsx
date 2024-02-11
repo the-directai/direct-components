@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import styles from "./styles.module.scss";
 
 export type SidepanelElementProps = {
@@ -10,9 +9,9 @@ export type SidepanelElementProps = {
 export function SidepanelElement({children, link = undefined, ...props}: SidepanelElementProps) {
     return (
         <div className={styles.navbar_vertical_element}>
-            <Link to={link ?? ""} {...props}>
+            <a href={link ?? ""} {...props}>
                 {children}
-            </Link>
+            </a>
         </div>
     );
 }

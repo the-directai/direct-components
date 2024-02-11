@@ -21,3 +21,5 @@ export const Default: Story = (args: object) => (
     </Sidepanel>
 )
 
+Default.args = {};
+
