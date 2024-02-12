@@ -1,22 +1,24 @@
 // variables below temp, to change, to add to main file
 $--navbar-vertical-width: 15rem;
 $--background-color: rgb(7, 7, 7);
-$--font-color: rgb(240,240,240);
 $--font-color-hover: #ff932f;
 $--font-size: 1rem;
 $--font-size-header: 1rem;
+$--font-color-selected: rgb(120, 120, 120);
+$--font-color-element: rgb(190, 190, 190);
+$--font-color-header: rgb(240, 240, 240);
 
 
 .sidepanel {
     width: $--navbar-vertical-width;
     background-color: $--background-color;
     height: 100vh;
-    color: $--font-color;
     font-family: inter;
-
+    
     .sidepanel_logo {
         margin-left: 1rem;
         padding: 0.5rem 0 0.5rem 0;
+        color: $--font-color-header;
     }
 
     .sidepanel_header a, .sidepanel_element a {
@@ -24,7 +26,7 @@ $--font-size-header: 1rem;
         -ms-user-select: none;
         user-select: none;
         text-decoration: none;
-        color: $--font-color;
+        color: $--font-color-element;
     }
     .sidepanel_element a:hover {
         color: $--font-color-hover;
@@ -33,6 +35,10 @@ $--font-size-header: 1rem;
 
     .sidepanel_header {
         margin-top: 1rem;
+        
+        a {
+            color: $--font-color-header;
+        }
     }
 
     .sidepanel_header {
@@ -42,5 +48,9 @@ $--font-size-header: 1rem;
     
     .sidepanel_element {
         margin-left: 3.5rem;
+
+        a:active {
+            color: $--font-color-selected;
+        }
     }
 }
